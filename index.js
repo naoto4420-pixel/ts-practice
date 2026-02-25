@@ -1,18 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const categories = ["家電", "PC", "ゲーム"];
-const stockCounts = [10, 5, 2];
-console.log(`カテゴリ一覧：${categories.join(",")}`);
-const myComputer = {
-    name: "ノートパソコン",
-    price: 55000,
-    isOnSale: false
+const userA = {
+    id: 100,
+    username: "Taro",
+    age: 30
 };
-console.log(`商品名：${myComputer.name} (価格： ${myComputer.price}円)`);
-const myGame = {
-    name: "シミュレーションゲーム",
-    price: 2000,
-    isOnSale: true
+const userB = {
+    id: "F-100",
+    username: "Hanako"
 };
-console.log(`商品名：${myGame.name} (価格： ${myGame.price}円)`);
+console.log(userA);
+console.log(userB);
 //# sourceMappingURL=index.js.map

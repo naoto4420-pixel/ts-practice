@@ -1,26 +1,19 @@
-const categories: string[] = ["家電","PC","ゲーム"];
-const stockCounts: number[] = [10,5,2];
-
-console.log(`カテゴリ一覧：${categories.join(",")}`);
-
-type Product = {
-  name: string;
-  price: number;
-  isOnSale: boolean;
+type User = {
+  id: number | string;
+  username: string;
+  age?: number;
 };
 
-const myComputer: Product = {
-  name: "ノートパソコン",
-  price: 55000,
-  isOnSale: false
+const userA: User = {
+  id: 100,
+  username: "Taro",
+  age: 30
 };
 
-console.log(`商品名：${myComputer.name} (価格： ${myComputer.price}円)`);
-
-const myGame: Product = {
-  name: "シミュレーションゲーム",
-  price: 2000,
-  isOnSale: true
+const userB: User = {
+  id: "F-100",
+  username: "Hanako"
 };
 
-console.log(`商品名：${myGame.name} (価格： ${myGame.price}円)`);
+console.log(userA);
+console.log(userB);
