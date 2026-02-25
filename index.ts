@@ -1,10 +1,26 @@
-const productName: string = "ノートパソコン";
-const price: number = 55000;
-const isOnSale: boolean = false;
+const categories: string[] = ["家電","PC","ゲーム"];
+const stockCounts: number[] = [10,5,2];
 
-console.log(`商品名：${productName}`);
-console.log(`価格：${price}`);
-console.log(`セール中：${isOnSale}`);
+console.log(`カテゴリ一覧：${categories.join(",")}`);
 
-let stockCount = 2;
-console.log(`在庫数：${stockCount}`)
+type Product = {
+  name: string;
+  price: number;
+  isOnSale: boolean;
+};
+
+const myComputer: Product = {
+  name: "ノートパソコン",
+  price: 55000,
+  isOnSale: false
+};
+
+console.log(`商品名：${myComputer.name} (価格： ${myComputer.price}円)`);
+
+const myGame: Product = {
+  name: "シミュレーションゲーム",
+  price: 2000,
+  isOnSale: true
+};
+
+console.log(`商品名：${myGame.name} (価格： ${myGame.price}円)`);
