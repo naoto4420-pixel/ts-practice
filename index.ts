@@ -1,44 +1,50 @@
-type ResultStatus = "success" | "error" | "loading";
-
-let currentStatus: ResultStatus = "loading";
-console.log(`現在のステータス: ${currentStatus}`);
-
-currentStatus = "success";
-console.log(`現在のステータス: ${currentStatus}`);
-
-interface ApiCall {
-  endpoint: string;
-  method: "GET" | "POST" | "PUT" | "DELETE";
-  status: ResultStatus;
+const echo =<T>(arg: T): T => {
+  return arg;
 };
 
-const fetchUserData: ApiCall = {
-  endpoint: "/user/1",
-  method: "GET",
-  status: "success"
+const word = echo<string>("こんにちは");
+const num = echo<number>(100);
+
+console.log(word);
+console.log(num);
+
+interface ApiResponse<T> {
+  status: "success" | "error";
+  data: T;
 };
 
-console.log(`${fetchUserData.method}通信で ${fetchUserData.endpoint} にアクセスし、結果は ${fetchUserData.status} でした。`);
+interface User{
+  name: string;
+};
 
-type TaskStatus = "Todo" | "inProgress" | "Done";
-
-interface Task {
-  id: number;
+interface Article {
   title: string;
-  status: TaskStatus
 };
 
-const taskA: Task = {
-  id: 1,
-  title: "タスクA",
-  status: "Done"
+const userResponse: ApiResponse<User> = {
+  status: "success",
+  data: {name: "Taro"}
 };
 
-const taskB: Task = {
-  id: 2,
-  title: "タスクB",
-  status: "inProgress"
+const articleResponse: ApiResponse<Article> = {
+  status: "success",
+  data: {title: "TypeScript入門"}
 };
 
-console.log(`タスク名: ${taskA.title}, ステータス: ${taskA.status}`);
-console.log(`タスク名: ${taskB.title}, ステータス: ${taskB.status}`);
+console.log(`ユーザー取得: ${userResponse.data.name}`);
+console.log(`記事取得: ${articleResponse.data.title}`);
+
+interface Box<T> {
+  item: T;
+};
+
+const swordBox: Box<string> = {
+  item: "剣"
+};
+
+const goldBox: Box<number> = {
+  item: 500
+};
+
+console.log(`箱の中身: ${swordBox.item}`);
+console.log(`箱の中身: ${goldBox.item}`);

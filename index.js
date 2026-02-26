@@ -1,27 +1,32 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let currentStatus = "loading";
-console.log(`現在のステータス: ${currentStatus}`);
-currentStatus = "success";
-console.log(`現在のステータス: ${currentStatus}`);
+const echo = (arg) => {
+    return arg;
+};
+const word = echo("こんにちは");
+const num = echo(100);
+console.log(word);
+console.log(num);
 ;
-const fetchUserData = {
-    endpoint: "/user/1",
-    method: "GET",
-    status: "success"
-};
-console.log(`${fetchUserData.method}通信で ${fetchUserData.endpoint} にアクセスし、結果は ${fetchUserData.status} でした。`);
 ;
-const taskA = {
-    id: 1,
-    title: "タスクA",
-    status: "Done"
+;
+const userResponse = {
+    status: "success",
+    data: { name: "Taro" }
 };
-const taskB = {
-    id: 2,
-    title: "タスクB",
-    status: "inProgress"
+const articleResponse = {
+    status: "success",
+    data: { title: "TypeScript入門" }
 };
-console.log(`タスク名: ${taskA.title}, ステータス: ${taskA.status}`);
-console.log(`タスク名: ${taskB.title}, ステータス: ${taskB.status}`);
+console.log(`ユーザー取得: ${userResponse.data.name}`);
+console.log(`記事取得: ${articleResponse.data.title}`);
+;
+const swordBox = {
+    item: "剣"
+};
+const goldBox = {
+    item: 500
+};
+console.log(`箱の中身: ${swordBox.item}`);
+console.log(`箱の中身: ${goldBox.item}`);
 //# sourceMappingURL=index.js.map
