@@ -1,32 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const echo = (arg) => {
-    return arg;
-};
-const word = echo("こんにちは");
-const num = echo(100);
-console.log(word);
-console.log(num);
 ;
+const updateUser = {
+    name: "新・タロウ"
+};
+console.log(`更新データ: ${updateUser.name}`);
 ;
+const safeUser = {
+    id: 1,
+    name: "ハナコ"
+};
+console.log(`公開ユーザー情報: ID ${safeUser.id}, 名前 ${safeUser.name}`);
 ;
-const userResponse = {
-    status: "success",
-    data: { name: "Taro" }
+const articlePrev = {
+    id: 1,
+    title: "記事タイトル"
 };
-const articleResponse = {
-    status: "success",
-    data: { title: "TypeScript入門" }
+const updateArticle = {
+    content: "差し替え記事"
 };
-console.log(`ユーザー取得: ${userResponse.data.name}`);
-console.log(`記事取得: ${articleResponse.data.title}`);
-;
-const swordBox = {
-    item: "剣"
-};
-const goldBox = {
-    item: 500
-};
-console.log(`箱の中身: ${swordBox.item}`);
-console.log(`箱の中身: ${goldBox.item}`);
+console.log(`記事名: ${articlePrev.title}`);
+console.log(`更新記事内容: ${updateArticle.content}`);
 //# sourceMappingURL=index.js.map
