@@ -1,46 +1,44 @@
-interface Character{
-  id: string;
-  name: string;
+type ResultStatus = "success" | "error" | "loading";
+
+let currentStatus: ResultStatus = "loading";
+console.log(`現在のステータス: ${currentStatus}`);
+
+currentStatus = "success";
+console.log(`現在のステータス: ${currentStatus}`);
+
+interface ApiCall {
+  endpoint: string;
+  method: "GET" | "POST" | "PUT" | "DELETE";
+  status: ResultStatus;
 };
 
-const hero: Character = {
-  id: "CH-001",
-  name: "勇者"
+const fetchUserData: ApiCall = {
+  endpoint: "/user/1",
+  method: "GET",
+  status: "success"
 };
 
-console.log(`${hero.name} (ID: ${hero.id})`);
+console.log(`${fetchUserData.method}通信で ${fetchUserData.endpoint} にアクセスし、結果は ${fetchUserData.status} でした。`);
 
-interface Player extends Character {
-  level: number;
-  job: string;
+type TaskStatus = "Todo" | "inProgress" | "Done";
+
+interface Task {
+  id: number;
+  title: string;
+  status: TaskStatus
 };
 
-const myPlayer: Player = {
-  id: "PL-100",
-  name: "剣士タロウ",
-  level: 50,
-  job: "ナイト"
+const taskA: Task = {
+  id: 1,
+  title: "タスクA",
+  status: "Done"
 };
 
-console.log(`プレイヤー: ${myPlayer.name}, 職業: ${myPlayer.job}, レベル: ${myPlayer.level}`);
-
-interface Enemy extends Character {
-  hp: number;
-  dropItem?: string;
+const taskB: Task = {
+  id: 2,
+  title: "タスクB",
+  status: "inProgress"
 };
 
-const enemyA: Enemy = {
-  id: "EN-001",
-  name: "スライム",
-  hp: 100,
-  dropItem: "ポーション"
-};
-
-const enemyB: Enemy = {
-  id: "EN-002",
-  name: "スケルトン",
-  hp: 50,
-};
-
-console.log(`敵1: ${enemyA.name}, HP: ${enemyA.hp}${enemyA.dropItem ? `, ドロップアイテム: ${enemyA.dropItem}` : ""}`);
-console.log(`敵2: ${enemyB.name}, HP: ${enemyB.hp}${enemyB.dropItem ? `, ドロップアイテム: ${enemyB.dropItem}` : ""}`);
+console.log(`タスク名: ${taskA.title}, ステータス: ${taskA.status}`);
+console.log(`タスク名: ${taskB.title}, ステータス: ${taskB.status}`);
