@@ -1,48 +1,46 @@
-type User = {
-  id: number | string;
-  username: string;
-  age?: number;
+interface Character{
+  id: string;
+  name: string;
 };
 
-const userA: User = {
-  id: 100,
-  username: "Taro",
-  age: 30
+const hero: Character = {
+  id: "CH-001",
+  name: "勇者"
 };
 
-const userB: User = {
-  id: "F-100",
-  username: "Hanako"
+console.log(`${hero.name} (ID: ${hero.id})`);
+
+interface Player extends Character {
+  level: number;
+  job: string;
 };
 
-console.log(userA);
-console.log(userB);
-
-const calculateTotal = (price: number, amount: number): number => {
-  return price * amount;
+const myPlayer: Player = {
+  id: "PL-100",
+  name: "剣士タロウ",
+  level: 50,
+  job: "ナイト"
 };
 
-const total = calculateTotal(1500, 3);
-console.log(`合計金額は${total}円です`);
+console.log(`プレイヤー: ${myPlayer.name}, 職業: ${myPlayer.job}, レベル: ${myPlayer.level}`);
 
-const reportTestStatus = (productName: string, hasBugs: boolean): void => {
-  if (hasBugs){
-    console.log(`[報告] ${productName}は引き続き不具合の調査が必要です。`);
-  }else{
-    console.log(`[報告] ${productName}はテスト完了、リリース可能です。`);
-  }
+interface Enemy extends Character {
+  hp: number;
+  dropItem?: string;
 };
 
-reportTestStatus("新作アクションゲーム", true);
-reportTestStatus("ECサイトのカート機能", false);
-
-const displayUserInfo = (user: User): void => { 
-  if (user.age){
-    console.log(`ユーザー名: ${user.username}, 年齢: ${user.age}歳 (ID:${user.id})`);
-  }else{
-    console.log(`ユーザー名: ${user.username}(ID:${user.id})`);
-  }
+const enemyA: Enemy = {
+  id: "EN-001",
+  name: "スライム",
+  hp: 100,
+  dropItem: "ポーション"
 };
 
-displayUserInfo(userA);
-displayUserInfo(userB);
+const enemyB: Enemy = {
+  id: "EN-002",
+  name: "スケルトン",
+  hp: 50,
+};
+
+console.log(`敵1: ${enemyA.name}, HP: ${enemyA.hp}${enemyA.dropItem ? `, ドロップアイテム: ${enemyA.dropItem}` : ""}`);
+console.log(`敵2: ${enemyB.name}, HP: ${enemyB.hp}${enemyB.dropItem ? `, ドロップアイテム: ${enemyB.dropItem}` : ""}`);

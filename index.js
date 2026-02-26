@@ -1,39 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const userA = {
-    id: 100,
-    username: "Taro",
-    age: 30
+;
+const hero = {
+    id: "CH-001",
+    name: "勇者"
 };
-const userB = {
-    id: "F-100",
-    username: "Hanako"
+console.log(`${hero.name} (ID: ${hero.id})`);
+;
+const myPlayer = {
+    id: "PL-100",
+    name: "剣士タロウ",
+    level: 50,
+    job: "ナイト"
 };
-console.log(userA);
-console.log(userB);
-const calculateTotal = (price, amount) => {
-    return price * amount;
+console.log(`プレイヤー: ${myPlayer.name}, 職業: ${myPlayer.job}, レベル: ${myPlayer.level}`);
+;
+const enemyA = {
+    id: "EN-001",
+    name: "スライム",
+    hp: 100,
+    dropItem: "ポーション"
 };
-const total = calculateTotal(1500, 3);
-console.log(`合計金額は${total}円です`);
-const reportTestStatus = (productName, hasBugs) => {
-    if (hasBugs) {
-        console.log(`[報告] ${productName}は引き続き不具合の調査が必要です。`);
-    }
-    else {
-        console.log(`[報告] ${productName}はテスト完了、リリース可能です。`);
-    }
+const enemyB = {
+    id: "EN-002",
+    name: "スケルトン",
+    hp: 50,
 };
-reportTestStatus("新作アクションゲーム", true);
-reportTestStatus("ECサイトのカート機能", false);
-const displayUserInfo = (user) => {
-    if (user.age) {
-        console.log(`ユーザー名: ${user.username}, 年齢: ${user.age}歳 (ID:${user.id})`);
-    }
-    else {
-        console.log(`ユーザー名: ${user.username}(ID:${user.id})`);
-    }
-};
-displayUserInfo(userA);
-displayUserInfo(userB);
+console.log(`敵1: ${enemyA.name}, HP: ${enemyA.hp}${enemyA.dropItem ? `, ドロップアイテム: ${enemyA.dropItem}` : ""}`);
+console.log(`敵2: ${enemyB.name}, HP: ${enemyB.hp}${enemyB.dropItem ? `, ドロップアイテム: ${enemyB.dropItem}` : ""}`);
 //# sourceMappingURL=index.js.map
