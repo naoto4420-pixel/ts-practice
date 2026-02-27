@@ -1,49 +1,36 @@
-interface UserProfile {
+const fetchGreeting = async (): Promise<string> => {
+  return "サーバーからの挨拶：こんにちは！";
+};
+
+const runProgram = async (): Promise<void> => {
+  console.log("通信を開始します．．．");
+
+  const message = await fetchGreeting();
+
+  console.log(message);
+  console.log("通信が完了しました。");
+};
+
+runProgram();
+
+interface Item {
   id: number;
   name: string;
-  email: string;
+  price: number;
 };
 
-type UpdateUser = Partial<UserProfile>;
-
-const updateUser: UpdateUser = {
-  name: "新・タロウ"
+const fetchItemData = async (): Promise<Item> => {
+  return {
+    id: 1,
+    name: "りんご",
+    price: 100,
+  };
 };
 
-console.log(`更新データ: ${updateUser.name}`);
+const displayItemData = async (): Promise<void> => {
+  const item = await fetchItemData();
 
-interface DBUser {
-  id: number;
-  name: string;
-  passwordHash: string;
+  console.log(`商品名：${item.name}, 価格：${item.price}円`);
 };
 
-type PublicUser = Omit<DBUser, "passwordHash">;
-
-const safeUser: PublicUser = {
-  id: 1,
-  name: "ハナコ"
-};
-
-console.log(`公開ユーザー情報: ID ${safeUser.id}, 名前 ${safeUser.name}`);
-
-interface Article {
-  id: number;
-  title: string;
-  content: string;
-};
-
-type ArticlePreview = Omit<Article, "content">;
-type UpdateArticle = Partial<Article>;
-
-const articlePrev: ArticlePreview = {
-  id: 1,
-  title: "記事タイトル"
-};
-
-const updateArticle: UpdateArticle = {
-  content: "差し替え記事"
-};
-
-console.log(`記事名: ${articlePrev.title}`);
-console.log(`更新記事内容: ${updateArticle.content}`);
+displayItemData();
