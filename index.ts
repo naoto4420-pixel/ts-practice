@@ -1,36 +1,24 @@
-const fetchGreeting = async (): Promise<string> => {
-  return "サーバーからの挨拶：こんにちは！";
+interface GitHubUser {
+  login: string;
+  id: number;
+  html_url: string;
+  public_repos: number;
 };
 
-const runProgram = async (): Promise<void> => {
-  console.log("通信を開始します．．．");
+const fetchUserInfo = async (username: string): Promise<GitHubUser> => {
+  const response = await fetch(`https://api.github.com/users/${username}`);
+  const data = await response.json();
 
-  const message = await fetchGreeting();
-
-  console.log(message);
-  console.log("通信が完了しました。");
+  return data;
 };
+
+const runProgram = async () => {
+  const user = await fetchUserInfo("naoto4420-pixel");
+
+  console.log(`ユーザー名： ${user.login}`);
+  console.log(`ID： ${user.id}`);
+  console.log(`GitHubのURL： ${user.html_url}`);
+  console.log(`公開リポジトリ数： ${user.public_repos}`);
+}
 
 runProgram();
-
-interface Item {
-  id: number;
-  name: string;
-  price: number;
-};
-
-const fetchItemData = async (): Promise<Item> => {
-  return {
-    id: 1,
-    name: "りんご",
-    price: 100,
-  };
-};
-
-const displayItemData = async (): Promise<void> => {
-  const item = await fetchItemData();
-
-  console.log(`商品名：${item.name}, 価格：${item.price}円`);
-};
-
-displayItemData();
